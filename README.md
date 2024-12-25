@@ -8,4 +8,8 @@ This repositiory is created for education purposes and practical excercises in t
 The goal of this repository is to provide education and practice for various testing techniques in software testing
 
 ## Testing Techniques Used
+- BLACK-BOX Testing Techniques
+    - Equivalence Partitioning
+
+## Testing Tools Used
 - pytest
