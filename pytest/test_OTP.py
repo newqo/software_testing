@@ -4,36 +4,26 @@ def OTP_length_detection(OTP):
     OTP_length = len(str(OTP))
 
     if(OTP_length >= 7 or OTP_length <= 5):
-        return "Invalid"
+        return "Invalid length"
     else:
-        return "Valid"
+        return "Valid length"
 
 def OTP_format_detection(OTP):
     OTP_check = (str(OTP)).isdecimal()
 
     if(OTP_check):
-        return "Valid"
+        return "Valid format"
     else:
-        return "Invalid"
+        return "Invalid format"
 
-@pytest.mark.parametrize("OTP,expected_outcome",[
-    ("A12B0","Invalid"),
-    ("03461","Invalid"),
-    ("01F36T","Valid"),
-    ("005390","Valid"),
-    ("AB471G3","Invalid"),
-    ("0833589","Invalid")
+@pytest.mark.parametrize("OTP,expected_length_outcome,expected_format_outcome",[
+    ("A12B0","Invalid length","Invalid format"),
+    ("03461","Invalid length","Valid format"),
+    ("01F36T","Valid length","Invalid format"),
+    ("005390","Valid length","Valid format"),
+    ("AB471G3","Invalid length","Invalid format"),
+    ("0833589","Invalid length","Valid format")
 ])
-def test_OTP_length(OTP,expected_outcome):
-    assert OTP_length_detection(OTP) == expected_outcome
-
-@pytest.mark.parametrize("OTP,expected_outcome",[
-    ("A12B0","Invalid"),
-    ("03461","Valid"),
-    ("01F36T","Invalid"),
-    ("005390","Valid"),
-    ("AB471G3","Invalid"),
-    ("0833589","Valid")
-])
-def test_OTP_format(OTP,expected_outcome):
-    assert OTP_format_detection(OTP) == expected_outcome
+def test_OTP_validation(OTP,expected_length_outcome,expected_format_outcome):
+    assert OTP_length_detection(OTP) == expected_length_outcome
+    assert OTP_format_detection(OTP) == expected_format_outcome
